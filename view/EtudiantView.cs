@@ -1,17 +1,20 @@
+namespace ExoCS.view;
+using ExoCS.dto;
+using ExoCS.service;
+using ExoCS.entiy;
 class EtudiantView
 {
-    public static Etudiant SaisieEtudiant(ref int compteur)
+    public static void SaisieEtudiant()
     {
-        Etudiant etudiant=new Etudiant(generateur.GenererMatricule(ref compteur), inputs.LireChaine("Nom : "), inputs.LireChaine("Prénom : "), []);
-        return etudiant;
+        EtudiantDto etudiantDto=new EtudiantDto(inputs.LireChaine("Nom : "), inputs.LireChaine("Prénom : "), []);
+        EtudiantService.getInstance().ajouterEtudiant(etudiantDto);
     }
     public static void AfficherEtudiants()
     {
-        EtudiantService.afficherEtudiants().ForEach(e => Console.WriteLine($"Matricule : {e.getMatricule} ; Nom : {e.getNom} ; Prénom : {e.getPrenom}"));
+        EtudiantService.getInstance().afficherEtudiants().ForEach(e => Console.WriteLine($"Matricule : {e.getMatricule()} ; Nom : {e.getNom()} ; Prénom : {e.getPrenom()}"));
     }
-
-    public static Etudiant AfficherEtudiant(string matricule)
+    public static void AfficherNotesDunEtudiant()
     {
-        return EtudiantService.afficherEtudiantparUnMatricule(matricule);
+        NoteService.getInstance().afficherNotesDunEtudiant(inputs.LireInt("matricule : ")).ForEach(n => Console.WriteLine($"matiere : {n.getMatiere()} ; Resultat : {n.getResultat()} "));
     }
 }
