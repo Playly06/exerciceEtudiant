@@ -1,3 +1,4 @@
+namespace ExoCS.view;
 class view{
     public static int Menu() {
         bool result = false;
