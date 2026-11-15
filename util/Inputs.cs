@@ -23,6 +23,16 @@ class inputs
         return choix;
     }
 
-    
+    public static int LireInt(string msg)
+    {
+        bool result = false;
+        int choix = 0;
+        do
+        {
+            Console.WriteLine(msg);
+            result = int.TryParse(Console.ReadLine(), out choix);
+        } while (!result);
+        return choix;
+    }
 
 }
