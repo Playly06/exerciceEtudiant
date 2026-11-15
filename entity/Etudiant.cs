@@ -1,22 +1,26 @@
-class Etudiant {
+namespace ExoCS.entiy;
+using static ExoCS.entiy.Note;
 
+class Etudiant {
     private string matricule;
     private string nom;
     private string prenom;
-    private System.Collections.Generic.List<double> notes;
-    
-    public Etudiant(string matricule, string nom, string prenom, System.Collections.Generic.List<double> notes)
+    private System.Collections.Generic.List<Note> notes;
+    public Etudiant(string nom, string prenom, System.Collections.Generic.List<Note> notes)
     {
-        this.matricule=matricule;
         this.nom=nom;
         this.prenom=prenom;
         this.notes=notes;
-
     }
 
     public string getMatricule()
     {
         return this.matricule;
+    }
+
+    public void setMatricule(string matricule)
+    {
+        this.matricule=matricule;
     }
 
     public string getNom()
@@ -28,7 +32,8 @@ class Etudiant {
     {
         return this.prenom;
     }
-    public System.Collections.Generic.List<double> getNotes()
+
+    public System.Collections.Generic.List<Note> getNotes()
     {
         return this.notes;
     }
